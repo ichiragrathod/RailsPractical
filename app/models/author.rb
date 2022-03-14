@@ -10,4 +10,5 @@ class Author < ApplicationRecord
     validates :date_of_birth, presence: true, length:{minimum:2, maximum:100}
 
     has_many :books
+    has_many :images, as: :imageable
 end

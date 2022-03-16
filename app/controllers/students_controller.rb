@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     end
 
     def destroy
-        @product.destroy
+        @student.destroy
         redirect_to students_path
     end
 

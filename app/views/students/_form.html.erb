@@ -9,7 +9,7 @@
 <% end %>
 
 
-<%= form_with(model:@student, local: true) do |f| %>
+<%= form_with(model:@student, local: true, data: { turbo: false }) do |f| %>
 
 <p>
     <%= f.label :first_name%>
@@ -32,7 +32,8 @@
 <p>
     <%= f.label :department%>
     <br>
-    <%= f.text_field :department%>
+    <%= f.text_field :department%> CE/IT
+   
 </p>
 
 <p>

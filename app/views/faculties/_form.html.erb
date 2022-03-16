@@ -9,7 +9,7 @@
 <% end %>
 
 
-<%= form_with(model:@faculty, local: true) do |f| %>
+<%= form_with(model:@faculty, local: true, data: { turbo: false }) do |f| %>
 
 <p>
     <%= f.label :first_name%>

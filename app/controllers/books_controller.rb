@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
     
     before_action :set_book, only: [:show, :edit, :update, :destroy]
+
     def index
         @books=Book.all 
     end
@@ -23,12 +24,10 @@ class BooksController < ApplicationController
 
     end
 
-
     def edit
     end
 
     def update
-        
         if @book.update(book_params)
             flash[:notice]="Book details updated successfully."
             redirect_to @book
@@ -42,9 +41,7 @@ class BooksController < ApplicationController
         redirect_to books_path
     end
 
-
     private
-
     def set_book
         @book=Book.find(params[:id])
     end

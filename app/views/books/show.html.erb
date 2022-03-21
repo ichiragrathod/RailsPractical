@@ -3,11 +3,9 @@
 <p> <strong>Name: </strong><%= @book.name%> </p>
 <p> <strong>Price: </strong><%= @book.price%></p>
 <p> <strong>Author ID: </strong><%= @book.author_id%></p>
-
 <%= link_to 'Edit', edit_book_path(@book) %>
 <br>
 <br>
 <%= button_to 'Delete', book_path(@book.id), method: :delete, data: { confirm: "Are you sure?" } %> 
 <br>
-
 <%=  link_to 'Return to Books listing', books_path%>

@@ -1,13 +1,11 @@
 <% if @author.errors.any? %>
     <h2>The following errors prevented the author from being saved </h2>
-    
     <ul>
     <% @author.errors.full_messages.each do |msg| %>
         <li> <%= msg %> </li>
     <% end %>
     </ul>
 <% end %>
-
 
 <%= form_with(model:@author, local: true) do |f| %>
 
@@ -38,6 +36,5 @@
 <p>
     <%= f.submit%>
 </p>
-
 
 <% end %>

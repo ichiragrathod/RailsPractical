@@ -1,0 +1,87 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<h1> Employees Listing Page!!!</h1>
+<br>
+
+<p>
+    <%= button_to 'Add New Employee', new_employee_path, method: 'get'%>
+</p>
+<br>
+
+<p>
+    <%= button_to 'See Employee Querys', employee_querys_path, method: 'get'%>
+</p>
+<br>
+
+<%= form_tag increase_order_path, data: { turbo: false }, :method => 'get' do %>
+    <%= submit_tag "Increase order" %>
+<% end %>
+<br>
+
+<%= form_tag decrease_order_path, data: { turbo: false }, :method => 'get' do %>
+    <%= submit_tag "Decrease order" %>
+<% end %>
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>No of Order</th>
+            <th>Full Time Available</th>
+            <th>Salary</th>
+            <th colspan="7">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @employees.each do |employee| %>
+            <tr>
+                <td><%= employee.id%> </td>
+                <td><%= employee.first_name%> <%= employee.last_name%></td>
+                <td><%= employee.email%></td> 
+                <td><%= employee.age%></td> 
+                <td><%= employee.no_of_order%></td> 
+                <td><%= employee.full_time_available%></td> 
+                <td><%= employee.salary%></td> 
+                <td><%= link_to 'Show',employee_path(employee.id)%></td>
+                <td><%= link_to 'Edit', edit_employee_path(employee.id)%></td>
+                <td><%= button_to 'Delete', employee_path(employee.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+            </tr>
+        <%  end %>   
+    </tbody>
+</table>
+<br>
+
+<h4>Employee Search by Email:</h4>
+
+<%= form_tag employees_path, data: { turbo: false }, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], placeholder:"Enter email here..."%>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<% if flash[:notice] %>
+    <% flash.each do |name, msg| %>
+        <span style="color:green;"> <%= msg %> </span>
+    <% end %>
+<% end %>

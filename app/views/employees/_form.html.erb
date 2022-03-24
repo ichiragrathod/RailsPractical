@@ -1,0 +1,60 @@
+<% if @employee.errors.any? %>
+    <h2>The following errors prevented the employee details from being saved </h2>
+    <ul>
+        <% @employee.errors.full_messages.each do |msg| %>
+            <li> <%= msg %> </li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model:@employee, data: { turbo: false }, local: true) do |f| %>
+
+    <%= f.hidden_field :lock_version%>
+
+    <p>
+        <%= f.label :first_name%>
+        <br>
+        <%= f.text_field :first_name%>
+    </p>
+
+    <p>
+        <%= f.label :last_name%>
+        <br>
+        <%= f.text_field :last_name%>
+    </p>
+
+    <p>
+        <%= f.label :email%>
+        <br>
+        <%= f.email_field :email%>
+    </p>
+
+    <p>
+        <%= f.label :age%>
+        <br>
+        <%= f.number_field :age%>
+    </p>
+
+    <p>
+        <%= f.label :no_of_order%>
+        <br>
+        <%= f.number_field :no_of_order%>
+    </p>
+
+    <p>
+        <%= f.label :full_time_available%>
+        <br>
+        <%= f.text_field :full_time_available%>
+    </p>
+    
+    <p>
+        <%= f.label :salary%>
+        <br>
+        <%= f.number_field :salary, step: :any%>
+    </p>
+
+    <p>
+        <%= f.submit%>
+    </p>
+
+<% end %>

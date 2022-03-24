@@ -1,0 +1,169 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<h1> Employees Querys!!!</h1>
+<br>
+    <p>
+        <%= button_to 'Return to Employees listing', employees_path, method: 'get' %>
+    </p>
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th>Query</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td> List employees having age > 20 and < 40 </td>
+                <td> 
+                    <% Employee.where("age > 20 and age < 40").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr>
+
+            <tr>
+                <td> List employees which are full_time_available </td>
+                <td> 
+                    <% Employee.where(full_time_available:"Yes").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td>List employees which have exact 5 number of orders and age > 25 </td>
+                <td> 
+                    <% Employee.where("no_of_order=5 and age > 25").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> List employees which are created before today</td>
+                <td> 
+                    <% Employee.where("created_at < ?", 1.days.ago).each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> List employees which have exact 5 number of orders Or age < 25 </td>
+                <td> 
+                    <% Employee.where("no_of_order=5 or age < 25").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> List employees in descending order by age </td>
+                <td> 
+                    <% Employee.order('age desc').each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> List employees in ascending order by number of order </td>
+                <td> 
+                    <% Employee.order(:no_of_order).each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> List employees having salary > 45000 </td>
+                <td> 
+                    <% Employee.where("salary > 45000").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Group employees by no_of_order with them and display employees with no_of_order > 5</td>
+               
+                <td> 
+                    <% Employee.group(:no_of_order).having("Count(*) > 5").each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr>
+
+            <tr>
+                <td> Example for keyword Unscope </td>
+                <td> 
+                    <% Employee.where('id > 1').limit(5).order('id desc').unscope(:order).each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Example for keyword Only </td>
+                <td> 
+                    <% Employee.where('id > 10').limit(10).order('id desc').only(:order, :where).each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Example for keyword Reselect </td>
+                <td> 
+                    <% Employee.select(:first_name).reselect(:last_name).each do |e| %> 
+                        <span> <%= e.last_name %>  </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Example for keyword Reorder </td>
+                <td> 
+                    <% Employee.order('first_name ASC').reorder('first_name DESC').each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Example for keyword reverse_order </td>
+                <td> 
+                    <% Employee.where("id > 10").reverse_order.each do |e| %> 
+                        <span> <%= e.first_name %> <%= e.last_name %> </span> <br>
+                    <% end %>   
+                </td>
+            </tr> 
+
+            <tr>
+                <td> Implement one example of locking </td>
+                <td> Implemented: While Updating the Record </td>
+            </tr> 
+    </tbody>
+</table>
+<br>

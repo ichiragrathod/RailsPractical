@@ -38,6 +38,14 @@ class ProductsController < ApplicationController
         redirect_to products_path
     end
 
+    def display_all_products
+        @products = Product.all.unscoped
+    end
+
+    def display_active_products
+        @products = Product.all
+    end
+
     private
     def set_product
         @product = Product.find(params[:id])

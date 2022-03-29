@@ -16,24 +16,9 @@
     }
 </style>
 
-
-<h1> Products Listing Page!!!</h1>
+<h1> Products Details Page!!!</h1>
 <br>
 
-<p>
-    <%= button_to 'Add New Product', new_product_path, method: 'get'%>
-</p>
-<br>
-
-<p>
-    <%= button_to 'Display All Products', display_all_products_path, method: 'get'%>
-</p>
-<br>
-
-<p>
-    <%= button_to 'Display Active Products', display_active_products_path, method: 'get'%>
-</p>
-<br>
 <table>
     <thead>
         <tr>
@@ -47,7 +32,6 @@
             <th colspan="7">Action</th>
         </tr>
     </thead>
-
     <tbody>
         <% @products.each do |product| %>
             <tr>
@@ -65,3 +49,8 @@
         <%  end %>   
     </tbody>
 </table>
+<br>
+<p>
+    <%= button_to 'Return to Products listing',products_path, method: 'get'%>
+</p>
+<br>

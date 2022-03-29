@@ -11,7 +11,6 @@ class Student < ApplicationRecord
     validates :terms_of_usage, acceptance: { message: ': You cannot proceed without accepting Terms of Usage' }
     validates :department, :inclusion => { :in => %w(IT CE),
         :message => "can't be %{value}" }
-
     
     #Callbacks code here...
     

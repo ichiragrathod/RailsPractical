@@ -1,5 +1,4 @@
 <h1> Students Listing Page!!!</h1>
-
 <br>
 <table>
     <thead>
@@ -11,7 +10,6 @@
             <th colspan="4">Action</th>
         </tr>
     </thead>
-
     <tbody>
     <% @students.each do |student| %>
         <tr>
@@ -23,9 +21,9 @@
             <td><%= link_to 'Edit', edit_student_path(student.id)%></td>
             <td><%= button_to 'Delete', student_path(student.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
         </tr>
-    <%  end %>   
+    <% end %>   
     </tbody>
 </table>
 <p>
-<%= link_to 'Add New Student', new_student_path %>
+    <%= link_to 'Add New Student', new_student_path %>
 </p>

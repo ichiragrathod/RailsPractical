@@ -1,0 +1,34 @@
+<h1> Faculties Listing Page!!!</h1>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date Of Birth</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Designation</th>
+            <th colspan="6">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @faculties.each do |faculty| %>
+        <tr>
+            <td><%= faculty.id%> </td>
+            <td><%= faculty.first_name%> <%= faculty.last_name%></td>
+            <td><%= faculty.date_of_birth%></td>
+            <td><%= faculty.email%></td> 
+            <td><%= faculty.phone_number%></td>
+            <td><%= faculty.designation%></td> 
+            <td><%= link_to 'Show', faculty_path(faculty.id)%></td>
+            <td><%= link_to 'Edit', edit_faculty_path(faculty.id)%></td>
+            <td><%= button_to 'Delete', faculty_path(faculty.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+        </tr>
+    <%  end %>   
+    </tbody>
+</table>
+<p>
+<%= link_to "Add New faculties Details", new_faculty_path %>
+</p>

@@ -1,0 +1,46 @@
+<% if @student.errors.any? %>
+    <h2>The following errors prevented the author from being saved </h2>
+    <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model:@student, local: true, data: { turbo: false }) do |f| %>
+<p>
+    <%= f.label :first_name%>
+    <br>
+    <%= f.text_field :first_name%>
+</p>
+
+<p>
+    <%= f.label :last_name%>
+    <br>
+    <%= f.text_field :last_name%>
+</p>
+
+<p>
+    <%= f.label :date_of_birth%>
+    <br>
+    <%= f.date_field :date_of_birth%>
+</p>
+
+<p>
+    <%= f.label :department%>
+    <br>
+    <%= f.text_field :department%> CE/IT
+   
+</p>
+
+<p>
+    <%= f.check_box :terms_of_usage%>
+    <br>
+    <%= f.label "I agree to the terms of usage."%>
+</p>
+
+<p>
+    <%= f.submit%>
+</p>
+
+<% end %>

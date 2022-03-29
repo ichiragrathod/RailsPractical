@@ -1,0 +1,12 @@
+<h1> Showing Students Details</h1>
+<br>
+<p> <strong>Name: </strong><%= @student.first_name%> <%= @student.last_name%></p>
+<p> <strong>Date of Birth: </strong><%= @student.date_of_birth%></p>
+<p> <strong>Department: </strong><%= @student.department%></p>
+
+<%= link_to 'Edit', edit_student_path(@student) %>
+<br>
+<br>
+<%= button_to 'Delete', student_path(@student.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+<%=  link_to 'Return to Students listing', students_path%>

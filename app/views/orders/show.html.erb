@@ -1,0 +1,19 @@
+<h1> Showing Customers Details</h1>
+<br>
+<p> <strong>Name: </strong><%= @order.customer.fname%> <%= @order.customer.lname%></p>
+<p> <strong>Email: </strong><%= @order.customer.email%></p>
+<p> <strong>Phone Number: </strong><%= @order.customer.phone_number%></p>
+<p> <strong>Product Name: </strong><%= @order.product.title%></p>
+<p> <strong>Product Price: </strong><%= @order.product.price%></p>
+<p> <strong>Product Status: </strong><%= @order.product.status%></p>
+<p> <strong>Quantity: </strong><%= @order.quantity%></p>
+<p> <strong>Total Price: </strong><%= @order.total_price%></p>
+<p> <strong>Order Status: </strong><%= @order.status%></p>
+
+<%= link_to 'Edit', edit_order_path(@order) %>
+<br>
+<br>
+<%= button_to 'Delete', order_path(@order.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+
+<%=  link_to 'Return to Orders listing', orders_path%>

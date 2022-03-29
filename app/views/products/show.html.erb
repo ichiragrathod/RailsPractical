@@ -1,12 +1,12 @@
 <h1> Showing Products Details</h1>
 <br>
-<p> <strong>title: </strong><%= @product.title%> </p>
-<p> <strong>description: </strong><%= @product.description%> </p>
-<p> <strong>price: </strong><%= @product.price%> </p>
-<p> <strong>capacity: </strong><%= @product.capacity%> </p>
-<p> <strong>is_active: </strong><%= @product.is_active%> </p>
-
-<p> <strong>status: </strong><%= @product.status%></p>
+<p> <strong>Title: </strong><%= @product.title%> </p>
+<p> <strong>Description: </strong><%= @product.description%> </p>
+<p> <strong>Price: </strong><%= @product.price%> </p>
+<p> <strong>Capacity: </strong><%= @product.capacity%> </p>
+<p> <strong>Is_active: </strong><%= @product.is_active%> </p>
+<p> <strong>Status: </strong><%= @product.status%></p>
+<p> <strong>Total Orders: </strong><%= Order.where('product_id = ?',@product).count %></p>
 
 <%= link_to 'Edit', edit_product_path(@product) %>
 <br>

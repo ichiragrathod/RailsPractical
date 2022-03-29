@@ -1,0 +1,23 @@
+<h3>Most sales product by price</h3>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+             <th>Sum_Of_Total_Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% Order.select('customer_id, sum(total_price) as Sum_Of_Total_Price').group('customer_id').order(Sum_Of_Total_Price: :desc).first(3).each do |s| %>
+        <tr>
+            <td><%= s.customer.fname %> <%= s.customer.lname %></td>
+            <td><%= s.customer.email %></td>
+            <td><%= s.customer.phone_number %></td>
+            <td><%= s.Sum_Of_Total_Price %></td>
+        </tr>
+    <%  end %>   
+    </tbody>
+</table>

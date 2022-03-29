@@ -1,38 +1,32 @@
 class FacultiesController < ApplicationController
     before_action :set_faculty, only: [:show, :edit, :update, :destroy]
     def index
-        @faculties=Faculty.all
+        @faculties = Faculty.all
     end
-
 
     def new
-        @faculty=Faculty.new
+        @faculty = Faculty.new
     end
-
 
     def create
       @faculty = Faculty.new(faculty_params)
       if @faculty.save
-        flash[:notice]="Faculty details was Added successfully."
+        flash[:notice] = "Faculty details was Added successfully."
         redirect_to faculty_path(@faculty)
       else
         render 'new'
       end
-
     end
 
-
     def show
-        
     end
 
     def edit
-        
     end
 
     def update
         if @faculty.update(faculty_params)
-            flash[:notice]="Faculty updated successfully."
+            flash[:notice] = "Faculty updated successfully."
             redirect_to @faculty
         else
             render 'edit'
@@ -44,12 +38,10 @@ class FacultiesController < ApplicationController
         redirect_to faculties_path
     end
 
-
-
     private
 
     def set_faculty
-        @faculty=Faculty.find(params[:id])
+        @faculty = Faculty.find(params[:id])
     end
 
     def faculty_params

@@ -7,7 +7,6 @@
     </ul>
 <% end %>
 <%= form_with(model:@customer, data: { turbo: false }, local: true) do |f| %>
-    <%= f.hidden_field :lock_version%>
 
     <p>
         <%= f.label :fname%>

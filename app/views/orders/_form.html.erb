@@ -6,6 +6,7 @@
         <% end %>
     </ul>
 <% end %>
+
 <%= form_with(model:@order, data: { turbo: false }, local: true) do |f| %>
     <p>
         <%= f.label :quantity%>
@@ -34,4 +35,5 @@
     <p>
         <%= f.submit%>
     </p>
+    
 <% end %>

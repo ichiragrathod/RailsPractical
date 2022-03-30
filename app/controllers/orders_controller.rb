@@ -3,7 +3,13 @@ class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
-        @orders = Order.all
+        if params[:search]
+            @orders = Order.all
+            @orders = Order.where(status:'booked') if params[:search] == 'booked'
+            @orders = Order.where(status:'cancelled') if params[:search] == 'cancelled'
+        else
+            @orders = Order.all
+        end
     end
 
     def new
@@ -11,13 +17,13 @@ class OrdersController < ApplicationController
     end
 
     def create
-      @order = Order.new(order_params)
-      if @order.save
-        flash[:notice] = "Order details was Added successfully."
-        redirect_to order_path(@order)
-      else
-        render 'new'
-      end
+        @order = Order.new(order_params)
+        if @order.save
+            flash[:notice] = "Order details was Added successfully."
+            redirect_to order_path(@order)
+        else
+            render 'new'
+        end
     end
 
     def show

@@ -3,12 +3,23 @@ class OrdersController < ApplicationController
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
+        #Searching Orders Record by Status
         if params[:search]
             @orders = Order.all
             @orders = Order.where(status:'booked') if params[:search] == 'booked'
             @orders = Order.where(status:'cancelled') if params[:search] == 'cancelled'
         else
             @orders = Order.all
+        end
+        
+        #Searching Orders Record by Product name
+        begin
+            if !(params[:product_name].blank?)
+                @orders_by_product = Product.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
+            end    
+        rescue Exception
+            flash[:notice] = "Record not found!"
+            redirect_to orders_path
         end
     end
 

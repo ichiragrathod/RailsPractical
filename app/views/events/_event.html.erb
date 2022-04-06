@@ -18,7 +18,7 @@
         
       <td> <%= link_to 'Show', event_path(event.id)%></td>
       <td> <%= link_to 'Edit', edit_event_path(event.id)%></td>
-      <td> <%= button_to 'Delete', event_path(event.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+      <td> <%= button_to 'Delete', event_path(event.id),method: :delete, data: { confirm: "Are you sure to delete this data?" } %> </td>
     </tr>
   <%  end %>   
   </tbody>

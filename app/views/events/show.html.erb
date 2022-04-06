@@ -1,0 +1,13 @@
+<h1> Showing Event Details</h1>
+<br>
+<p> <strong>Name: </strong><%= @event.name%> </p>
+<p> <strong>description: </strong><%= @event.description%></p>
+<p> <strong>event_date: </strong><%= @event.event_date%></p>
+
+<%= link_to 'Edit', edit_event_path(@event) %>
+<br>
+<br>
+<%= button_to 'Delete', event_path(@event.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+
+<%=  link_to 'Return to Events listing', events_path%>

@@ -1,0 +1,40 @@
+<% if @customer.errors.any? %>
+  <h2>The following errors prevented the customer details from being saved </h2>
+  <ul>
+    <% @customer.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model:@customer, data: { turbo: false }, local: true) do |f| %>
+
+  <p>
+    <%= f.label :fname%>
+    <br>
+    <%= f.text_field :fname%>
+  </p>
+
+  <p>
+    <%= f.label :lname%>
+    <br>
+    <%= f.text_field :lname%>
+  </p>
+
+  <p>
+    <%= f.label :email%>
+    <br>
+    <%= f.email_field :email%>
+  </p>
+
+  <p>
+    <%= f.label :phone_number %>
+    <br>
+    <%= f.number_field :phone_number%>
+  </p>
+
+  <p>
+    <%= f.submit%>
+  </p>
+
+<% end %>

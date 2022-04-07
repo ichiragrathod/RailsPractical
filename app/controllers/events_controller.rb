@@ -3,7 +3,13 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.order(:name)
+    
+    #Searching Orders Record by Status
+    if params[:search]
+      @events = Event.where('category_id=?',params[:search])
+    else
+      @events = Event.order(:name)
+    end
   end
 
   def show
@@ -48,6 +54,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :event_date)
+    params.require(:event).permit(:name, :description, :category_id, :event_date)
   end
 end

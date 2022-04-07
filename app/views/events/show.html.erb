@@ -1,8 +1,9 @@
 <h1> Showing Event Details</h1>
 <br>
 <p> <strong>Name: </strong><%= @event.name%> </p>
-<p> <strong>description: </strong><%= @event.description%></p>
-<p> <strong>event_date: </strong><%= @event.event_date%></p>
+<p> <strong>Description: </strong><%= @event.description%></p>
+<p> <strong>Category: </strong><%= @event.category.category_name%></p>
+<p> <strong>Event Date: </strong><%= @event.event_date%></p>
 
 <% if logged_in? && @event.users[0] == current_user %>
     <%= link_to 'Edit', edit_event_path(@event) %>

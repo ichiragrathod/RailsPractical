@@ -1,3 +1,10 @@
 <h1> Events Listing Page!!!</h1>
 <br>
+<%# functionality to filter events by its category. %>
+<%= form_tag(events_path, method: :get) do %>
+  <%= select_tag(:search, options_for_select(Category.all.map { |c| [c.category_name, c.id]}))%>
+  <%= submit_tag("Search")%>
+<% end %>
+<br>
+
 <%= render 'event'%>

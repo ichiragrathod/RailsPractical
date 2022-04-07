@@ -1,7 +1,7 @@
 <% flash.each do |name,msg|%>
-  <%if name=='alert'%>
+  <% if name=='alert' %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%else%>
+  <% else%>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
   <% end %>
     <%=msg%>
@@ -9,4 +9,4 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-<%end%>
+<% end %>

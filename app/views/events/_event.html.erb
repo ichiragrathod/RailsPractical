@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -17,9 +17,11 @@
       <td> <%= event.event_date %></td>
         
       <td> <%= link_to 'Show', event_path(event.id)%></td>
-      <td> <%= link_to 'Edit', edit_event_path(event.id)%></td>
-      <td> <%= button_to 'Delete', event_path(event.id),method: :delete, data: { confirm: "Are you sure to delete this data?" } %> </td>
+      <% if logged_in? && event.users[0] == current_user %>
+        <td> <%= link_to 'Edit', edit_event_path(event.id)%></td>
+        <td> <%= button_to 'Delete', event_path(event.id),method: :delete, data: { confirm: "Are you sure to delete this data?" } %> </td>
+      <% end %>
     </tr>
-  <%  end %>   
+  <% end %>   
   </tbody>
 </table>

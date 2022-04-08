@@ -6,22 +6,23 @@
 <p> <strong>Event Date: </strong><%= @event.event_date%></p> 
 
 <%# Showing comments %>
-<p> 
-    <strong>Comments: </strong> <br>
-    <% @event.comments.each do |comment| %> 
-        <span>- <%= comment.content %> </span> <br>
-    <% end %>   
+<p>
+	<strong>Comments: </strong> <br>
+	<% @event.comments.each do |comment| %> 
+			<span>- <%= comment.content %> </span> <br>
+	<% end %>   
 </p>
 
 <% if logged_in? && @event.users[0] == current_user %>
-    <%= link_to 'Edit', edit_event_path(@event) %>
-    <br>
-    <br>
-    <%= button_to 'Delete', event_path(@event.id), method: :delete, data: { confirm: "Are you sure?" } %> 
-    <br>
-
-    <%= render partial: "comments/form", locals: {commentable:@event} %>
-    <br>
+	<%= link_to 'Edit', edit_event_path(@event) %>
+	<br>
+	<br>
+	<%= button_to 'Delete', event_path(@event.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+	<br>
 <% end %>
+<% if logged_in? %>
+	<%= render partial: "comments/form", locals: {commentable:@event} %>
+<% end %>
+<br>
 
 <%=  link_to 'Return to Events listing', events_path%>

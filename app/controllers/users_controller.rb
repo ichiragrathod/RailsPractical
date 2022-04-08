@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @events = @user.events
   end
 
-
   def edit
   end
 

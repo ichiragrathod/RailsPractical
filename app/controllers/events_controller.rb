@@ -8,12 +8,12 @@ class EventsController < ApplicationController
     if params[:search]
       @events = Event.where('category_id=?',params[:search])
     else
-      @events = Event.order(:name)
+      @events = Event.order("event_date desc")
     end
   end
 
   def show
-    
+   
   end
 
   def new

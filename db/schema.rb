@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_082147) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_07_113357) do
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
     t.integer "user_id"
@@ -45,6 +45,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_082147) do
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "like"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "customers", force: :cascade do |t|

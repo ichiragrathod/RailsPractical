@@ -1,0 +1,23 @@
+<h1>Create a new category</h1>
+<% if @category.errors.any? %>
+  <h2>The following errors prevented the category from being saved </h2>
+  <ul>
+    <% @category.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model:@category, data: { turbo: false }, local: true) do |f| %>
+
+  <p>
+    <%= f.label :category_name%>
+    <br>
+    <%= f.text_field :category_name%>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

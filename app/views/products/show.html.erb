@@ -11,3 +11,26 @@
 <%= button_to 'Delete', product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" } %> 
 <br>
 <%=  link_to 'Return to Products listing', products_path%>
+
+<h2><%= @product.name%> Orders Details</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Product Description</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Order.where('product_id=?',@product).each do |order| %>
+    <tr>
+      <td><%= order.id %> </td>
+      <td><%= order.product.name %> </td>
+      <td><%= order.product.description %></td>
+      <td><%= order.total_price %></td>
+    </tr>
+  <% end %>   
+  </tbody>
+</table>

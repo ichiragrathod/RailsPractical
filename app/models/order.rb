@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :product
+	belongs_to :product
 	validates :quantity, presence:true
 
 	private

@@ -1,6 +1,5 @@
 class Business::CustomersController < ApplicationController
-
-	before_action :set_customer, only: [:preview, :edit, :update, :delete_customer]
+  before_action :set_customer, only: [:preview, :edit, :update, :delete_customer]
 
   def index
     @customers = Customer.all 
@@ -45,11 +44,11 @@ class Business::CustomersController < ApplicationController
   end
 
   private
-  def set_customer
-    @customer = Customer.find(params[:id])
-  end
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
 
-  def customer_params
-    params.require(:customer).permit(:name, :email, :phone_number)
-  end  
+    def customer_params
+      params.require(:customer).permit(:name, :email, :phone_number)
+    end  
 end

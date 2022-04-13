@@ -42,16 +42,15 @@ class OrdersController < ApplicationController
   end
 
   private
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
 
-  def set_product
-    @product = Product.find(params[:product_id])
-  end
+    def set_order
+      @order = @product.orders.find(params[:id])
+    end
 
-  def set_order
-    @order = @product.orders.find(params[:id])
-  end
-
-  def order_params  
-    params.require(:order).permit(:quantity, :total_price)
-  end
+    def order_params  
+      params.require(:order).permit(:quantity, :total_price)
+    end
 end

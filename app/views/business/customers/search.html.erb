@@ -1,0 +1,31 @@
+<h1> Search Customers By Names</h1>
+<br>
+
+<%= form_tag(search_business_customers_path, :method => "get") do %>
+  <%= text_field_tag :search_name, params[:search_name], :placeholder => "Search Full Name" %>
+  <%= submit_tag "Search" %> 
+<% end %>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %> </td>
+      <td><%= customer.name %> </td>
+      <td><%= customer.email %></td>
+      <td><%= customer.phone_number %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%=  link_to 'Return to Customers listing', business_customers_path%>

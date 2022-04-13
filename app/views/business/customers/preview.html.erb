@@ -1,0 +1,12 @@
+<h1> Showing Customers Details</h1>
+<br>
+<p> <strong>Name: </strong> <%= @customer.name%> </p>
+<p> <strong>Email: </strong><%= @customer.email%></p>
+<p> <strong>Phone Number: </strong><%= @customer.phone_number%></p>
+
+<%= link_to 'Edit', edit_business_customer_path(@customer) %>
+<br>
+<br>
+<%= button_to 'Delete', delete_customer_business_customer_path(@customer.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+<%=  link_to 'Return to Customers listing', business_customers_path%>

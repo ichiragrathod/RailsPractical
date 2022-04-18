@@ -1,0 +1,26 @@
+<% if @order.errors.any? %>
+  <h2>The following errors prevented the customer details from being saved </h2>
+  <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model:@order, data: { turbo: false }, local: true) do |f| %>
+  <p>
+    <%= f.label :quantity%>
+    <br>
+    <%= f.text_field :quantity%>
+  </p>
+
+  <p>
+    <%= f.label :product_id%>
+    <br>
+    <%= f.select :product_id, Product.all.map { |p| [p.product_name, p.id]}%>
+  </p>
+
+  <p>
+    <%= f.submit%>
+  </p>
+    
+<% end %>

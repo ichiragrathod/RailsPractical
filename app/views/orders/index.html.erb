@@ -1,0 +1,30 @@
+<h1> Orders Listing Page!!!</h1>
+<p>
+    <%= link_to 'Add New Order', new_order_path %>
+</p>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Product Price</th>
+      <th>Total Price </th>
+      <th colspan="4">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %> </td>
+      <td><%= order.product.product_name %> </td>
+      <td><%= order.product.price %></td>
+      <td><%= order.total_price %></td>
+      <td><%= link_to 'Show', order_path(order.id)%></td>
+      <td><%= link_to 'Edit', edit_order_path(order.id)%></td>
+      <td><%= button_to 'Delete', order_path(order.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+    </tr>
+  <%  end %>   
+  </tbody>
+</table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_033808) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_035504) do
   create_table "addresses", force: :cascade do |t|
     t.string "user_address"
     t.integer "user_id"
@@ -113,6 +113,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_033808) do
     t.integer "imageable_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.float "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.string "description"
@@ -141,4 +150,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_033808) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "events", "categories"
+  add_foreign_key "orders", "products"
 end

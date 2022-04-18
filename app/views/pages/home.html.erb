@@ -1,2 +1,5 @@
 <h1>Product Management System</h1>
+<% if current_user %>
+	<h2>Hello, <%= current_user.email.split('@')[0] %> </h2>
+<% end %>
 <p>Create Products and Manage Orders</p>

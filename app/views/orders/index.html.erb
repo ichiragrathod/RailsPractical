@@ -1,7 +1,9 @@
 <h1> Orders Listing Page!!!</h1>
-<p>
-    <%= link_to 'Add New Order', new_order_path %>
-</p>
+<% if current_user && current_user.admin? %>
+  <p>
+      <%= link_to 'Add New Order', new_order_path %>
+  </p>
+<% end %>
 <br>
 
 <table class="table table-striped">
@@ -21,9 +23,11 @@
       <td><%= order.product.product_name %> </td>
       <td><%= order.product.price %></td>
       <td><%= order.total_price %></td>
-      <td><%= link_to 'Show', order_path(order.id)%></td>
-      <td><%= link_to 'Edit', edit_order_path(order.id)%></td>
-      <td><%= button_to 'Delete', order_path(order.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+      <% if current_user && current_user.admin? %>
+        <td><%= link_to 'Show', order_path(order.id)%></td>
+        <td><%= link_to 'Edit', edit_order_path(order.id)%></td>
+        <td><%= button_to 'Delete', order_path(order.id),method: :delete, data: { confirm: "Are you sure to delete this data?" }  %> </td>
+      <% end %>
     </tr>
   <%  end %>   
   </tbody>

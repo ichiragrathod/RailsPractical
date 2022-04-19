@@ -1,0 +1,18 @@
+<h1> Showing Employee Details</h1>
+<br>
+
+<p> <strong>Name: </strong><%= @employee.employee_name%> </p>
+<p> <strong>Email: </strong><%= @employee.email%> </p>
+<p> <strong>Birth Date: </strong><%= @employee.birth_date%> </p>
+<p> <strong>Gender: </strong><%= @employee.gender%> </p>
+<p> <strong>Hobbies: </strong> <%= @employee.hobbies%> </p>
+<p> <strong>Address: </strong><%= @employee.address%> </p>
+<p> <strong>Mobile Number: </strong><%= @employee.mobile_number%> </p>
+<p> <strong>Document: </strong> </p>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %>
+<br>
+<br>
+<%= button_to 'Delete', employee_path(@employee.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+<%=  link_to 'Return to Employees listing', employees_path%>

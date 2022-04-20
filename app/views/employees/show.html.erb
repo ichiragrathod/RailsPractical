@@ -6,7 +6,7 @@
 <p> <strong>Birth Date: </strong><%= @employee.birth_date%> </p>
 <p> <strong>Gender: </strong><%= @employee.gender%> </p>
 <p> <strong>Hobbies: </strong> <%= @employee.hobbies%> </p>
-<p> <strong>Address: </strong><%= @employee.address%> </p>
+<p> <strong>Address: </strong><%= @employee.addresses[0].house_name%>, <%= @employee.addresses[0].street_name%>, <%= @employee.addresses[0].road%>, <%= @employee.address %> </p>
 <p> <strong>Mobile Number: </strong><%= @employee.mobile_number%> </p>
 <p> <strong>Document: </strong> </p>
 

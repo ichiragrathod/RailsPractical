@@ -48,6 +48,18 @@
     <%= f.label :address%>
     <br>
     <%= f.text_area :address%>
+    <br>
+    <%= f.fields_for :addresses,Address.new do |addresses_form| %>
+      <%= addresses_form.label :house_name, "House Name" %>
+      <%= addresses_form.text_field :house_name %>
+      <br>
+      <%= addresses_form.label :street_name, "Street Name"  %>
+      <%= addresses_form.text_field :street_name %>
+      <br>
+      <%= addresses_form.label :road, "Road Name"  %>
+      <%= addresses_form.text_field :road %>
+      <br>
+    <% end %>
   </p>
 
   <p>

@@ -39,12 +39,23 @@ class EmployeesController < ApplicationController
     redirect_to employees_path
   end
 
+  def search
+    if params[:query]
+      if params[:query]==""
+        flash[:alert] = "Please enter employee name"
+        render @search
+      else
+        @employees = Employee.where('employee_name LIKE ?', params[:query] + "%")
+      end
+    end
+  end
+  
   private
     def set_employee
       @employee = Employee.find(params[:id])
     end
     
     def employee_params  
-      params.require(:employee).permit(:employee_name,:email,:password, :gender,:address,:mobile_number,:birth_date,:document,hobbies: [])
+      params.require(:employee).permit(:employee_name,:email,:password, :gender,:address,:mobile_number,:birth_date,:document, addresses_attributes:[:id, :house_name,:street_name,:road], hobbies: [])
     end
 end

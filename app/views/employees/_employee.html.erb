@@ -25,7 +25,7 @@
         <td><%= employee.hobbies %> </td>
         <td><%= employee.addresses[0].house_name%>, <%= employee.addresses[0].street_name%>, <%= employee.addresses[0].road%>, <%= employee.address %></td>
         <td><%= employee.mobile_number %> </td>
-        <td> </td>
+        <td><%= image_tag employee.document, style:"width:100px; height:100px;"%> </td>
         <td><%= link_to 'Show',employee_path(employee.id) %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee.id) %></td>
         <td><%= button_to 'Delete', employee_path(employee.id),method: :delete, data: { confirm: "Are you sure to delete this data?" } %> </td>

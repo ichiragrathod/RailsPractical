@@ -8,7 +8,7 @@
 <p> <strong>Hobbies: </strong> <%= @employee.hobbies%> </p>
 <p> <strong>Address: </strong><%= @employee.addresses[0].house_name%>, <%= @employee.addresses[0].street_name%>, <%= @employee.addresses[0].road%>, <%= @employee.address %> </p>
 <p> <strong>Mobile Number: </strong><%= @employee.mobile_number%> </p>
-<p> <strong>Document: </strong> </p>
+<p> <strong>Document: </strong><%= image_tag @employee.document, style:"width:100px; height:100px;"%> </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %>
 <br>

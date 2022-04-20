@@ -49,7 +49,7 @@
     <br>
     <%= f.text_area :address%>
     <br>
-    <%= f.fields_for :addresses,Address.new do |addresses_form| %>
+    <%= f.fields_for :addresses do |addresses_form| %>
       <%= addresses_form.label :house_name, "House Name" %>
       <%= addresses_form.text_field :house_name %>
       <br>

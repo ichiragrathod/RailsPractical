@@ -7,6 +7,7 @@ class EmployeesController < ApplicationController
   
   def new
     @employee = Employee.new
+    @employee.addresses.build
   end
   
   def create

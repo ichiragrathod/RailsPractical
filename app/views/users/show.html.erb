@@ -3,7 +3,7 @@
 <p> <strong>ID: </strong><%= @user.id%></p>
 <p> <strong>Name: </strong><%= @user.name%> </p>
 <p> <strong>Email: </strong><%= @user.email%></p>
-<p> <strong>Picture: </strong> <img src="<%= @user.picture %>" class="img-responsive img-thumbnail" height="200px" width="200px"></p>
+<p> <strong>Picture: </strong> <%= image_tag @user.picture.url(:thumb), class:"img-responsive img-thumbnail"%> </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 <br>

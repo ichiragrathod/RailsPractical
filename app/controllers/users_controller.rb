@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.with(user: @user).welcome_email.deliver_now
       flash[:notice] = "User details was Added successfully."
       redirect_to user_path(@user)
     else
@@ -26,7 +27,9 @@ class UsersController < ApplicationController
   end
   
   def update
+    old_email = @user.email
     if @user.update(user_params)
+      UserMailer.with(user: @user).update_email.deliver_now if old_email != @user.email
       flash[:notice] = "User updated successfully."
       redirect_to @user
     else

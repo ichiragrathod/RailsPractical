@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_26_065758) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_072959) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -83,6 +83,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_065758) do
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment_content"
+    t.date "date_of_comment"
+    t.integer "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -179,6 +188,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_065758) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "employees"
+  add_foreign_key "comments", "articles"
   add_foreign_key "events", "categories"
   add_foreign_key "orders", "products"
 end

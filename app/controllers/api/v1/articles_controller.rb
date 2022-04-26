@@ -32,6 +32,15 @@ class Api::V1::ArticlesController < ApplicationController
     @article.destroy
   end
 
+  def article_search
+    @article = Article.find_by(title:params[:title])
+    if @article
+      render json: @article
+    else
+      render json: "Record not found!"
+    end
+  end
+
   private
     def set_article
       @article = Article.find(params[:id])

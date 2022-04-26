@@ -32,6 +32,15 @@ class Api::V1::CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def comment_search
+    @comment = Comment.find_by(comment_content:params[:comment])
+    if @comment
+      render json: @comment
+    else
+      render json: "Record not found!"
+    end
+  end
+
   private
     def set_comment
       @comment = Comment.find(params[:id])

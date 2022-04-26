@@ -1,0 +1,34 @@
+<% if @book.errors.any? %>
+    <h2>The following errors prevented the book details from being saved </h2>
+    <ul>
+    <% @book.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model:@book, local: true, data: { turbo: false })  do |f| %>
+
+<p>
+    <%= f.label :name%>
+    <br>
+    <%= f.text_field :name%>
+</p>
+
+<p>
+    <%= f.label :price%>
+    <br>
+    <%= f.number_field :price%>
+</p>
+
+<p>
+    <%= f.label :author_id%>
+    <br>
+    <%= f.collection_select :author_id, Author.all, :id, :first_name %>
+</p>
+
+<p>
+    <%= f.submit%>
+</p>
+
+<% end %>

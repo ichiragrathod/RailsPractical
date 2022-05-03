@@ -1,7 +1,11 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Email id must be exist" do
+    assert_not User.new(password: 123456).save
+  end
+
+  test "Password must be exist" do
+    assert_not User.new(email: "chirag@gmail.com").save
+  end
 end

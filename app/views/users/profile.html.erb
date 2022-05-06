@@ -1,0 +1,82 @@
+<h1>Update Profile</h1>
+
+  
+<div id="successArea" class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;">
+  User Profile updated successfully.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div id="errorArea">
+</div>
+
+<%= form_with(model:@user,method: :patch,local:false, url:update_profile_user_path, data: { turbo: false }) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :first_name%>
+    <br>
+    <%= f.text_field :first_name, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name%>
+    <br>
+    <%= f.text_field :last_name, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email%>
+    <br>
+    <%= f.email_field :email, class:"form-control", id:"email_field"%>
+  </div>
+
+  <div class="form-group", id="password_field", style="display:none;">
+    <%= f.label :password%>
+    <br>
+    <%= f.password_field :password, class:"form-control"%>
+ </div>
+
+  <div class="form-group">
+    <%= f.check_box :subcription, id:"subcription_check"%>
+    <br>
+    <%= f.label :subcription%>
+  </div>
+
+  <div class="form-group", id="subscription_email", style="display:none;">
+    <%= f.label :subscription_email%>
+    <br>
+    <%= f.email_field :subscription_email, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit data: { disable_with: "Saving..." } %>
+  </div>
+  
+<% end %>
+
+<div id="show_user">
+</div>
+<br>
+
+<script>
+  $(document).ready(function()
+  {
+    //for subscription email
+    $('#subcription_check').change(function(){
+      if(this.checked)
+        $('#subscription_email').show();
+      else
+        $('#subscription_email').hide();
+    });
+
+    //for email to show password field
+    $('#email_field').keyup(function(){
+      if($('#email_field').val())
+        $('#password_field').show();
+      else
+        $('#password_field').hide();
+    });
+
+  });
+</script>

@@ -1,0 +1,82 @@
+class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :profile, :update_profile, :change_password, :update_password]
+  
+  def index
+    @users = User.all
+  end
+  
+  def new
+    @user = User.new
+  end
+  
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "User details was Added successfully."
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
+  end
+  
+  def show
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @user.update(user_params)
+      flash[:notice] = "User updated successfully."
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    @user.destroy
+    redirect_to users_path
+  end
+
+  #for update profile
+  def profile
+  end
+
+  def update_profile
+    respond_to do |format|
+      if @user.update(user_params)
+        flash[:notice] = "User Profile updated successfully."
+        format.js
+      else
+        flash[:errors] = @user.errors.full_messages
+        format.js
+      end
+    end
+  end
+
+  #for change password
+  def change_password
+  end
+
+  def update_password
+    respond_to do |format|
+      if @user.update_attribute(:password,params[:user][:password])
+        flash[:notice] = "User Password updated successfully."
+        format.js
+      else
+        flash[:errors] = @user.errors.full_messages
+        format.js
+      end
+    end
+  end
+  
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
+    
+    def user_params  
+      params.require(:user).permit(:first_name,:last_name,:email,:password,:subcription,:subscription_email)
+    end
+end

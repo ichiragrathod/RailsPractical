@@ -1,0 +1,17 @@
+<h1> Showing Users Details</h1>
+<br>
+<p> <strong>ID: </strong><%= @user.id%></p>
+<p> <strong>First Name: </strong><%= @user.first_name%> </p>
+<p> <strong>Last Name: </strong><%= @user.last_name%> </p>
+<p> <strong>Email: </strong><%= @user.email%></p>
+<p> <strong>Subcription: </strong><%= @user.subcription%> </p>
+<p> <strong>Subscription Email: </strong><%= @user.subscription_email%> </p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<br>
+<br>
+<%= button_to 'Delete', user_path(@user.id), method: :delete, data: { confirm: "Are you sure?" } %> 
+<br>
+
+<%=  link_to 'Return to Users listing', users_path%>

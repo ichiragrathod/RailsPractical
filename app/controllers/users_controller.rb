@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :profile, :update_profile, :change_password, :update_password]
   
   def index
     @users = User.all
@@ -37,6 +37,38 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_path
+  end
+
+  #for update profile
+  def profile
+  end
+
+  def update_profile
+    respond_to do |format|
+      if @user.update(user_params)
+        flash[:notice] = "User Profile updated successfully."
+        format.js
+      else
+        flash[:errors] = @user.errors.full_messages
+        format.js
+      end
+    end
+  end
+
+  #for change password
+  def change_password
+  end
+
+  def update_password
+    respond_to do |format|
+      if @user.update_attribute(:password,params[:user][:password])
+        flash[:notice] = "User Password updated successfully."
+        format.js
+      else
+        flash[:errors] = @user.errors.full_messages
+        format.js
+      end
+    end
   end
   
   private

@@ -1,0 +1,7 @@
+<% if @user.errors.any?%>
+  $("#errorArea").html("<%= escape_javascript render('error', user:@user)%>")
+<% else %>
+  $("#show_user").html("<%= escape_javascript render('user', user:@user)%>")
+  $('#successArea').show();
+  $("#errorArea").hide();
+<% end %>
